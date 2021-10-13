@@ -1,0 +1,17 @@
+.nav-bar {
+  justify-content: space-between;
+}
+
+.nav-logo {
+  cursor: pointer;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.profileIMG {
+  width: 30px;
+  height: 30px;
+}

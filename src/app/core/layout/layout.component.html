@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="nav-bar">
+    <span routerLink="/" class="nav-logo">NG Shop</span>
+
+    <section class="nav-menu">
+      <a mat-button>Products</a>
+      <a mat-button>Cart</a>
+      <a mat-button>News</a>
+    </section>
+
+    <ng-template #loginButton>
+      <button (click)="login()" mat-button>
+        Login
+        <mat-icon>login</mat-icon>
+      </button>
+    </ng-template>
+
+    <ng-container *ngIf="user$ | async as user; else loginButton">
+      <div>
+        <button mat-button [matMenuTriggerFor]="menu">
+          {{ user.displayName }}
+          <img [src]="user.photoURL" class="profileIMG" />
+        </button>
+
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item disabled>
+            <mat-icon>account_circle</mat-icon>
+            <span>Account Settings</span>
+          </button>
+          <button mat-menu-item *ngIf="user.roles?.admin">
+            <mat-icon>admin_panel_settings</mat-icon>
+            <span>Admin Dashboard</span>
+          </button>
+          <button (click)="logout()" mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </div>
+    </ng-container>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
