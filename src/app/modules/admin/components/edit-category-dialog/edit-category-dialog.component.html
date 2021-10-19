@@ -1,0 +1,23 @@
+<h2 mat-dialog-title align="center">Edit category</h2>
+<mat-dialog-content align="center">
+  <form [formGroup]="editCategoryForm" class="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Link</mat-label>
+      <input matInput formControlName="link" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button
+    mat-raised-button
+    color="accent"
+    [mat-dialog-close]="editCategoryForm.value"
+  >
+    Edit
+  </button>
+  <button mat-raised-button mat-dialog-close>Cancle</button>
+</mat-dialog-actions>
