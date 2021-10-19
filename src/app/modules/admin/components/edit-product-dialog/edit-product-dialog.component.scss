@@ -1,0 +1,29 @@
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) auto;
+  gap: 1rem;
+  grid-template-areas:
+    'name category'
+    'photo price'
+    'description description';
+
+  &__name {
+    grid-area: name;
+  }
+
+  &__category {
+    grid-area: category;
+  }
+
+  &__photo {
+    grid-area: photo;
+  }
+
+  &__description {
+    grid-area: description;
+  }
+
+  &__price {
+    grid-area: price;
+  }
+}

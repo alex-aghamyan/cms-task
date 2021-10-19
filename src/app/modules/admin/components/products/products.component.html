@@ -1,0 +1,141 @@
+<section class="form-wrapper">
+  <form [formGroup]="addProductForm" (ngSubmit)="addProduct()" class="form">
+    <mat-form-field appearance="fill" class="form__name">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form__category">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="categoryID">
+        <mat-option
+          *ngFor="let category of categories | async"
+          [value]="category.id"
+          >{{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form__photo">
+      <mat-label>Photo URL</mat-label>
+      <input type="url" matInput formControlName="photoURL" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form__description">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        [mat-autosize]="false"
+        rows="7"
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form__price">
+      <mat-label>Price</mat-label>
+      <input type="number" matInput formControlName="price" />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      class="form__btn"
+      [disabled]="addProductForm.invalid"
+    >
+      Add Product
+    </button>
+  </form>
+</section>
+
+<mat-form-field class="filterField" appearance="standard">
+  <mat-label>Filter</mat-label>
+  <input
+    matInput
+    [formControl]="filterControl"
+    (keyup)="applyFilter()"
+    #input
+  />
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let product" class="truncate">
+        {{ product.id }}
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let product" class="truncate">
+        {{ product.name }}
+      </td>
+    </ng-container>
+
+    <!-- CategoryID Column -->
+    <ng-container matColumnDef="categoryID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>CategoryID</th>
+      <td mat-cell *matCellDef="let product" class="truncate">
+        {{ product.categoryID }}
+      </td>
+    </ng-container>
+
+    <!-- Photo URL Column -->
+    <ng-container matColumnDef="photoURL">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Photo URL</th>
+      <td mat-cell *matCellDef="let product" class="truncate">
+        {{ product.photoURL }}
+      </td>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <td mat-cell *matCellDef="let product" class="truncate">
+        {{ product.description }}
+      </td>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+      <td mat-cell *matCellDef="let product">
+        {{ product.price }}
+      </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="Actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let product">
+        <button
+          (click)="editProduct(product.id, product)"
+          mat-icon-button
+          color="accent"
+        >
+          <mat-icon>mode_edit</mat-icon>
+        </button>
+        <button
+          (click)="deleteProduct(product.id)"
+          mat-icon-button
+          color="warn"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10]"
+    aria-label="Select page of users"
+  ></mat-paginator>
+</div>

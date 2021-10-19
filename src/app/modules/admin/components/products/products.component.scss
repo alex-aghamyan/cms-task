@@ -1,0 +1,51 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 1rem;
+  grid-template-areas:
+    'name category description description btn'
+    'photo price description description btn';
+
+  &__name {
+    grid-area: name;
+  }
+
+  &__category {
+    grid-area: category;
+  }
+
+  &__photo {
+    grid-area: photo;
+  }
+
+  &__description {
+    grid-area: description;
+  }
+
+  &__price {
+    grid-area: price;
+  }
+
+  &__btn {
+    grid-area: btn;
+  }
+}
+
+.filterField {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+td,
+th {
+  width: 15%;
+}
