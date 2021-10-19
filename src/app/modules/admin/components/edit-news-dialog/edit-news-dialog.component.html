@@ -1,0 +1,28 @@
+<h2 mat-dialog-title align="center">Edit news</h2>
+<mat-dialog-content align="center">
+  <form [formGroup]="editNewsForm" class="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Content</mat-label>
+      <textarea
+        matInput
+        [mat-autosize]="false"
+        rows="6"
+        formControlName="content"
+      ></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button
+    mat-raised-button
+    color="accent"
+    [mat-dialog-close]="editNewsForm.value"
+  >
+    Edit
+  </button>
+  <button mat-raised-button mat-dialog-close>Cancle</button>
+</mat-dialog-actions>

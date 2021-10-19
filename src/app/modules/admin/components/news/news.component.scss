@@ -1,0 +1,39 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
+  grid-template-areas:
+    'title content content'
+    'btn content content';
+  align-items: start;
+  column-gap: 1rem;
+
+  &__title {
+    grid-area: title;
+  }
+
+  &__content {
+    grid-area: content;
+  }
+
+  &__btn {
+    grid-area: btn;
+  }
+}
+
+.filterField {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+td,
+th {
+  width: 30%;
+}
