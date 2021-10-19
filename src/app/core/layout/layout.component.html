@@ -2,21 +2,25 @@
   <mat-toolbar-row class="nav-bar">
     <span routerLink="/" class="nav-logo">NG Shop</span>
 
-    <section class="nav-menu">
-      <a mat-button>Products</a>
-      <a mat-button>Cart</a>
-      <a mat-button>News</a>
-    </section>
-
-    <ng-template #loginButton>
+    <ng-template #anonymousUser>
+      <section class="nav-menu">
+        <a mat-button>Products</a>
+        <a mat-button>Cart</a>
+      </section>
       <button (click)="login()" mat-button>
         Login
         <mat-icon>login</mat-icon>
       </button>
     </ng-template>
 
-    <ng-container *ngIf="user$ | async as user; else loginButton">
-      <div>
+    <ng-container *ngIf="user$ | async as user; else anonymousUser">
+      <section class="nav-menu">
+        <a mat-button>Products</a>
+        <a mat-button>Cart</a>
+        <a mat-button>News</a>
+      </section>
+
+      <section>
         <button mat-button [matMenuTriggerFor]="menu">
           {{ user.displayName }}
           <img [src]="user.photoURL" class="profileIMG" />
@@ -27,7 +31,7 @@
             <mat-icon>account_circle</mat-icon>
             <span>Account Settings</span>
           </button>
-          <button mat-menu-item *ngIf="user.roles?.admin">
+          <button routerLink="/admin" mat-menu-item *ngIf="user.roles?.admin">
             <mat-icon>admin_panel_settings</mat-icon>
             <span>Admin Dashboard</span>
           </button>
@@ -36,7 +40,7 @@
             <span>Logout</span>
           </button>
         </mat-menu>
-      </div>
+      </section>
     </ng-container>
   </mat-toolbar-row>
 </mat-toolbar>
