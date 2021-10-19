@@ -1,0 +1,13 @@
+<mat-drawer-container class="container">
+  <mat-drawer mode="side" opened class="sidebar">
+    <mat-nav-list *ngFor="let link of links">
+      <a mat-list-item routerLinkActive="active-link" [routerLink]="link.link">
+        {{ link.name }}
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <mat-drawer-content class="content">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
