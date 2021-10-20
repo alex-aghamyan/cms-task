@@ -40,7 +40,7 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
       roles: {
-        admin: true,
+        admin: true, // for demonstration purpose anyone can be an admin
         subscriber: true,
       },
     };

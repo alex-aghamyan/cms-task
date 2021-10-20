@@ -21,7 +21,16 @@ const routes: Routes = [
         (m) => m.ProductsModule
       ),
   },
-  { path: 'cart', loadChildren: () => import('./modules/cart/cart.module').then(m => m.CartModule) },
+  {
+    path: 'cart',
+    loadChildren: () =>
+      import('./modules/cart/cart.module').then((m) => m.CartModule),
+  },
+  {
+    path: 'news',
+    loadChildren: () =>
+      import('./modules/news/news.module').then((m) => m.NewsModule),
+  },
   {
     path: '**',
     redirectTo: 'products',
