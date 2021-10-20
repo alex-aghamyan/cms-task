@@ -1,0 +1,17 @@
+<ng-container *ngIf="($products | async)?.length !== 0; else noProducts">
+  <section class="container">
+    <ng-container *ngFor="let product of $products | async">
+      <section>
+        <product-item [product]="product"></product-item>
+      </section>
+      <div class="price">
+        <span class="price-text">Total price: {{ totalPrice }}$</span>
+      </div>
+      <button mat-raised-button color="primary">Purchase</button>
+    </ng-container>
+  </section>
+</ng-container>
+
+<ng-template #noProducts>
+  <span class="no-products">No products yet</span>
+</ng-template>

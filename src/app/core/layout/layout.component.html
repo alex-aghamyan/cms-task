@@ -1,11 +1,17 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="nav-bar">
-    <span routerLink="/" class="nav-logo">NG Shop</span>
+    <span>NG Shop</span>
 
     <ng-template #anonymousUser>
       <section class="nav-menu">
-        <a mat-button>Products</a>
-        <a mat-button>Cart</a>
+        <a routerLink="products" mat-button>Products</a>
+        <a
+          routerLink="cart"
+          [matBadge]="totalItems | async"
+          matBadgeColor="accent"
+          mat-button
+          >Cart</a
+        >
       </section>
       <button (click)="login()" mat-button>
         Login
@@ -15,9 +21,15 @@
 
     <ng-container *ngIf="user$ | async as user; else anonymousUser">
       <section class="nav-menu">
-        <a mat-button>Products</a>
-        <a mat-button>Cart</a>
-        <a mat-button>News</a>
+        <a routerLink="products" mat-button>Products</a>
+        <a
+          routerLink="cart"
+          [matBadge]="totalItems | async"
+          matBadgeColor="accent"
+          mat-button
+          >Cart</a
+        >
+        <a routerLink="news" mat-button>News</a>
       </section>
 
       <section>

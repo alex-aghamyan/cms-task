@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EMPTY, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'layout',
@@ -10,11 +12,15 @@ import { AuthService } from '../services/auth.service';
 })
 export class LayoutComponent implements OnInit {
   user$: Observable<User> = EMPTY;
+  totalItems: Observable<number | undefined> = EMPTY;
 
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.user$ = this.auth.user$;
+    this.totalItems = this.cartService.$cart.pipe(
+      map((products) => products?.length)
+    );
   }
 
   login() {
