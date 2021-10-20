@@ -1,0 +1,16 @@
+<ng-container *ngIf="$productInfo | async as product">
+  <section class="container">
+    <img [src]="product.photoURL" />
+    <span class="name">{{ product.name }}</span>
+    <p class="description">{{ product.description }}</p>
+    <span class="price">Price: {{ product.price }}$</span>
+
+    <button
+      (click)="addProductToCart(product)"
+      mat-raised-button
+      color="primary"
+    >
+      Add to cart
+    </button>
+  </section>
+</ng-container>

@@ -1,0 +1,29 @@
+<mat-card class="product-card">
+  <mat-card-content
+    [routerLink]="['product', product.name]"
+    (click)="openProduct()"
+    class="card-content"
+  >
+    <img [src]="product.photoURL" class="card-content__image" />
+    <span class="card-content__name">{{ product.name }}</span>
+    <span class="card-content__price">{{ product.price }}$</span>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      (click)="addToCart()"
+      mat-icon-button
+      color="primary"
+      [disabled]="inCart"
+    >
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+    <button
+      *ngIf="inCart"
+      (click)="removeFromCart()"
+      mat-icon-button
+      color="warn"
+    >
+      <mat-icon>remove_shopping_cart</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

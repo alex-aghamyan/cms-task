@@ -1,0 +1,39 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+  justify-content: center;
+  gap: 1rem;
+  width: 70%;
+  padding: 3rem 0;
+}
+
+@media (max-width: 1536px) {
+  .products {
+    grid-template-columns: repeat(4, auto);
+  }
+}
+
+@media (max-width: 1280px) {
+  .products {
+    gap: 1rem;
+    grid-template-columns: repeat(4, auto);
+  }
+}
+
+@media (max-width: 1024px) {
+  .products {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media (max-width: 768px) {
+  .products {
+    grid-template-columns: repeat(2, auto);
+  }
+}

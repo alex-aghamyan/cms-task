@@ -26,7 +26,7 @@ export class GetCategoriesService {
         return categories.map((category) => {
           let id = category.id;
           let categoryData = category.data();
-          return { id, ...categoryData };
+          return { ...categoryData, id };
         });
       })
     );

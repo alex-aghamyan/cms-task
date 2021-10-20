@@ -1,0 +1,28 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: clamp(10rem, 13vw, 200px);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__image {
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  &__name {
+    font-size: large;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__price {
+    font-size: medium;
+  }
+}

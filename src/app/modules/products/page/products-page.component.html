@@ -1,0 +1,21 @@
+<mat-tab-group
+  (selectedIndexChange)="loadProducts($event)"
+  mat-align-tabs="center"
+  backgroundColor="primary"
+>
+  <mat-tab *ngFor="let category of categories | async" [label]="category.name">
+    <section class="container">
+      <section class="products">
+        <ng-container *ngFor="let product of products | async">
+          <product-card
+            (addProductToCart)="addProductToCart($event)"
+            (removeProductFromCart)="removeProductFromCart($event)"
+            [product]="product"
+          ></product-card>
+        </ng-container>
+      </section>
+    </section>
+  </mat-tab>
+</mat-tab-group>
+
+<router-outlet></router-outlet>

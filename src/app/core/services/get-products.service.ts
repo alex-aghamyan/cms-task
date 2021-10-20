@@ -31,7 +31,9 @@ export class GetProductsService {
     return collectionSnapshots<Product>(productQuery).pipe(
       map((products) => {
         return products.map((product) => {
-          return product.data();
+          let id = product.id;
+          let productData = product.data();
+          return { ...productData, id };
         });
       })
     );
