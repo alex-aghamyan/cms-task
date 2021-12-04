@@ -13,7 +13,7 @@ export class CartService {
 
   constructor() {}
 
-  get $cart(): Observable<Product[] | null> {
+  get cart$(): Observable<Product[] | null> {
     return this.cart.asObservable();
   }
 

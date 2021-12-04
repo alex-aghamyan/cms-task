@@ -18,7 +18,7 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.user$ = this.auth.user$;
-    this.totalItems = this.cartService.$cart.pipe(
+    this.totalItems = this.cartService.cart$.pipe(
       map((products) => products?.length)
     );
   }

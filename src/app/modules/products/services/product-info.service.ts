@@ -7,7 +7,7 @@ export class ProductInfoService {
   private productInfo: BehaviorSubject<Product | null> =
     new BehaviorSubject<Product | null>(null);
 
-  get $productInfo(): Observable<Product | null> {
+  get productInfo$(): Observable<Product | null> {
     return this.productInfo.asObservable();
   }
 

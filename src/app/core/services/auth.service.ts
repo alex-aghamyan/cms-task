@@ -34,7 +34,7 @@ export class AuthService {
 
   private setUser(user: User) {
     const userRef: DocumentReference = doc(this.firestore, `users/${user.uid}`);
-    const userData = {
+    const userData: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,

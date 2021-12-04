@@ -9,7 +9,7 @@ import { ProductInfoService } from '../../services/product-info.service';
   styleUrls: ['./single-product-page.component.scss'],
 })
 export class SingleProductPageComponent implements OnInit {
-  $productInfo!: Observable<Product | null>;
+  productInfo$!: Observable<Product | null>;
 
   constructor(
     private productInfoService: ProductInfoService,
@@ -17,7 +17,7 @@ export class SingleProductPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.$productInfo = this.productInfoService.$productInfo;
+    this.productInfo$ = this.productInfoService.productInfo$;
   }
 
   addProductToCart(product: Product) {

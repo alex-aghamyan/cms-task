@@ -8,13 +8,13 @@ import { CartService } from 'src/app/core/services/cart.service';
   styleUrls: ['./cart-page.component.scss'],
 })
 export class CartPageComponent implements OnInit {
-  $products: Observable<Product[] | null> = EMPTY;
+  products$: Observable<Product[] | null> = EMPTY;
   totalPrice: number = 0;
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.$products = this.cartService.$cart;
+    this.products$ = this.cartService.cart$;
     this.totalPrice = this.cartService.totalPrice();
   }
 }

@@ -1,6 +1,6 @@
-<ng-container *ngIf="($products | async)?.length !== 0; else noProducts">
+<ng-container *ngIf="(products$ | async)?.length !== 0; else noProducts">
   <section class="container">
-    <ng-container *ngFor="let product of $products | async">
+    <ng-container *ngFor="let product of products$ | async">
       <section>
         <product-item [product]="product"></product-item>
       </section>
