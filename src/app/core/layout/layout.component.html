@@ -1,7 +1,5 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="nav-bar">
-    <span>NG Shop</span>
-
     <ng-template #anonymousUser>
       <section class="nav-menu">
         <a routerLink="products" mat-button>Products</a>
@@ -22,6 +20,7 @@
     <ng-container *ngIf="user$ | async as user; else anonymousUser">
       <section class="nav-menu">
         <a routerLink="products" mat-button>Products</a>
+        <a routerLink="news" mat-button>News</a>
         <a
           routerLink="cart"
           [matBadge]="totalItems | async"
@@ -29,12 +28,10 @@
           mat-button
           >Cart</a
         >
-        <a routerLink="news" mat-button>News</a>
       </section>
 
       <section>
         <button mat-button [matMenuTriggerFor]="menu">
-          {{ user.displayName }}
           <img [src]="user.photoURL" class="profileIMG" />
         </button>
 

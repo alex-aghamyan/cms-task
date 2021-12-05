@@ -37,3 +37,9 @@
     grid-template-columns: repeat(2, auto);
   }
 }
+
+@media (max-width: 576px) {
+  .news {
+    grid-template-columns: repeat(1, auto);
+  }
+}
