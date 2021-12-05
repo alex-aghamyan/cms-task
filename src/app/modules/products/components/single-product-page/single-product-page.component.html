@@ -1,4 +1,4 @@
-<ng-container *ngIf="productInfo$ | async as product">
+<ng-container *ngIf="product$ | async as product">
   <section class="container">
     <img [src]="product.photoURL" />
     <span class="name">{{ product.name }}</span>

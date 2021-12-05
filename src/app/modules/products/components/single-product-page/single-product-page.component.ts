@@ -1,23 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { EMPTY, Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { Product } from 'src/app/core/models/product.model';
 import { CartService } from 'src/app/core/services/cart.service';
-import { ProductInfoService } from '../../services/product-info.service';
+import { GetProductsService } from 'src/app/core/services/get-products.service';
 
 @Component({
   templateUrl: './single-product-page.component.html',
   styleUrls: ['./single-product-page.component.scss'],
 })
 export class SingleProductPageComponent implements OnInit {
-  productInfo$!: Observable<Product | null>;
+  product$: Observable<Product> = EMPTY;
 
   constructor(
-    private productInfoService: ProductInfoService,
-    private cartService: CartService
+    private cartService: CartService,
+    private productsService: GetProductsService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.productInfo$ = this.productInfoService.productInfo$;
+    this.product$ = this.route.params.pipe(
+      switchMap((param) => {
+        return this.productsService.getProductsById(param.id);
+      })
+    );
   }
 
   addProductToCart(product: Product) {

@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 import {
   collection,
   CollectionReference,
+  DocumentReference,
   Firestore,
   collectionSnapshots,
   query,
   where,
+  doc,
+  docData,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -37,5 +40,14 @@ export class GetProductsService {
         });
       })
     );
+  }
+
+  getProductsById(id: string): Observable<Product> {
+    const docRef: DocumentReference<any> = doc(
+      this.firestore,
+      `products/${id}`
+    );
+
+    return docData(docRef);
   }
 }

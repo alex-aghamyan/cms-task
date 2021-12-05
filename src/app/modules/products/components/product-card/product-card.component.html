@@ -1,9 +1,5 @@
 <mat-card class="product-card">
-  <mat-card-content
-    [routerLink]="['', product.name]"
-    (click)="openProduct()"
-    class="card-content"
-  >
+  <mat-card-content (click)="openProduct()" class="card-content">
     <img [src]="product.photoURL" class="card-content__image" />
     <span class="card-content__name">{{ product.name }}</span>
     <span class="card-content__price">{{ product.price }}$</span>
