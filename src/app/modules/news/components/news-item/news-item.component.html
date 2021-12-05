@@ -1,1 +1,6 @@
-<p>news-item works!</p>
+<mat-card class="news-card">
+  <mat-card-content (click)="openNews()" class="card-content">
+    <span class="card-content__title">{{ news.title }}</span>
+    <span class="card-content__content">{{ news.content }}$</span>
+  </mat-card-content>
+</mat-card>

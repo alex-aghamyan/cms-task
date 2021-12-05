@@ -1,1 +1,7 @@
-<p>news-page works!</p>
+<section class="container">
+  <section class="news">
+    <ng-container *ngFor="let news of news$ | async">
+      <news-item [news]="news"></news-item>
+    </ng-container>
+  </section>
+</section>

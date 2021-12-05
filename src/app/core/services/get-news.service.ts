@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import {
   collection,
   CollectionReference,
+  DocumentReference,
   Firestore,
   collectionSnapshots,
+  doc,
+  docData,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -30,5 +33,11 @@ export class GetNewsService {
         });
       })
     );
+  }
+
+  getNewsById(id: string): Observable<News> {
+    const docRef: DocumentReference<any> = doc(this.firestore, `news/${id}`);
+
+    return docData<News>(docRef);
   }
 }

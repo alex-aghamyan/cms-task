@@ -1,0 +1,8 @@
+<section class="wrapper">
+  <ng-container *ngIf="news$ | async as news">
+    <mat-card class="container">
+      <span class="title">{{ news.title }}</span>
+      <p class="content">{{ news.content }}</p>
+    </mat-card>
+  </ng-container>
+</section>
