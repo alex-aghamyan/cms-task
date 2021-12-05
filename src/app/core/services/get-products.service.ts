@@ -48,6 +48,10 @@ export class GetProductsService {
       `products/${id}`
     );
 
-    return docData(docRef);
+    return docData<Product>(docRef).pipe(
+      map((product) => {
+        return { ...product, id: docRef.id };
+      })
+    );
   }
 }

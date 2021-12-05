@@ -15,6 +15,15 @@ export class CartService {
     return this.cart.asObservable();
   }
 
+  isInCartById(id: string | undefined): boolean {
+    const products = this.products.filter((product) => product.id === id);
+    if (products.length === 0) {
+      return false;
+    }
+
+    return true;
+  }
+
   addProductToCart(product: Product) {
     product.isInCart = true;
     this.products.push(product);

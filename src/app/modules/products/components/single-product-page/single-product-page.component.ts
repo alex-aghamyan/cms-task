@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Product } from 'src/app/core/models/product.model';
 import { CartService } from 'src/app/core/services/cart.service';
 import { GetProductsService } from 'src/app/core/services/get-products.service';
@@ -12,6 +12,7 @@ import { GetProductsService } from 'src/app/core/services/get-products.service';
 })
 export class SingleProductPageComponent implements OnInit {
   product$: Observable<Product> = EMPTY;
+  isInCart: boolean = false;
 
   constructor(
     private cartService: CartService,
@@ -23,6 +24,10 @@ export class SingleProductPageComponent implements OnInit {
     this.product$ = this.route.params.pipe(
       switchMap((param) => {
         return this.productsService.getProductsById(param.id);
+      }),
+      map((product) => {
+        const isInCart = this.cartService.isInCartById(product.id);
+        return { ...product, isInCart: isInCart };
       })
     );
   }

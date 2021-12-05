@@ -3,19 +3,21 @@ import {
   EventEmitter,
   Input,
   OnDestroy,
+  OnInit,
   Output,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Product } from 'src/app/core/models/product.model';
+import { CartService } from 'src/app/core/services/cart.service';
 
 @Component({
   selector: 'product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss'],
 })
-export class ProductCardComponent implements OnDestroy {
+export class ProductCardComponent implements OnInit, OnDestroy {
   notifier: Subject<boolean> = new Subject();
   @Input() product!: Product;
   @Output() addProductToCart: EventEmitter<Product> =
@@ -23,7 +25,15 @@ export class ProductCardComponent implements OnDestroy {
   @Output() removeProductFromCart: EventEmitter<Product> =
     new EventEmitter<Product>();
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private cartService: CartService
+  ) {}
+
+  ngOnInit() {
+    this.product.isInCart = this.cartService.isInCartById(this.product.id);
+  }
 
   openProduct() {
     this.route.firstChild?.params
