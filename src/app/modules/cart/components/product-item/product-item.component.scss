@@ -6,6 +6,7 @@
 
 .content-container {
   display: flex;
+  width: 100%;
   gap: 1rem;
 
   &__image {
@@ -26,4 +27,8 @@
       font-size: small;
     }
   }
+}
+
+.action {
+  align-self: flex-end;
 }

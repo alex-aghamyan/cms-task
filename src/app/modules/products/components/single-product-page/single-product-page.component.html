@@ -4,13 +4,23 @@
     <span class="name">{{ product.name }}</span>
     <p class="description">{{ product.description }}</p>
     <span class="price">Price: {{ product.price }}$</span>
-
-    <button
-      (click)="addProductToCart(product)"
-      mat-raised-button
-      color="primary"
-    >
-      Add to cart
-    </button>
+    <section class="actions">
+      <button
+        (click)="addProductToCart(product)"
+        mat-raised-button
+        color="primary"
+        [disabled]="product.isInCart"
+      >
+        Add to cart
+      </button>
+      <button
+        *ngIf="product.isInCart"
+        (click)="removeProductFromCart(product)"
+        mat-raised-button
+        color="warn"
+      >
+        Remove from cart
+      </button>
+    </section>
   </section>
 </ng-container>

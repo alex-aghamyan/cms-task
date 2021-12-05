@@ -11,18 +11,18 @@ export class CartService {
     this.products
   );
 
-  constructor() {}
-
   get cart$(): Observable<Product[] | null> {
     return this.cart.asObservable();
   }
 
   addProductToCart(product: Product) {
+    product.isInCart = true;
     this.products.push(product);
     this.cart.next(this.products);
   }
 
   removeProductFromCart(product: Product) {
+    product.isInCart = false;
     this.products = this.products.filter((item) => item.id !== product.id);
     this.cart.next(this.products);
   }

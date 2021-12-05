@@ -7,9 +7,16 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [CartPageComponent, ProductItemComponent],
-  imports: [CommonModule, CartRoutingModule, MatCardModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    CartRoutingModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
 })
 export class CartModule {}

@@ -1,12 +1,17 @@
 <mat-card class="product-card">
-  <mat-card-content
-    [routerLink]="['product', product.name]"
-    class="content-container"
-  >
+  <mat-card-content class="content-container">
     <img [src]="product.photoURL" class="content-container__image" />
     <div class="content-container__text">
       <span class="content-container__text-name">{{ product.name }}</span>
       <span class="content-container__text-price">{{ product.price }}$</span>
     </div>
   </mat-card-content>
+  <button
+    (click)="removeProductFromCart()"
+    mat-icon-button
+    color="warn"
+    class="action"
+  >
+    <mat-icon>remove_shopping_cart</mat-icon>
+  </button>
 </mat-card>

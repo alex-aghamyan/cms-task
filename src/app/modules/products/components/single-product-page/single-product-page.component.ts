@@ -23,4 +23,8 @@ export class SingleProductPageComponent implements OnInit {
   addProductToCart(product: Product) {
     this.cartService.addProductToCart(product);
   }
+
+  removeProductFromCart(product: Product) {
+    this.cartService.removeProductFromCart(product);
+  }
 }

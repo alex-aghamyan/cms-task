@@ -13,7 +13,6 @@ export class ProductCardComponent {
     new EventEmitter<Product>();
   @Output() removeProductFromCart: EventEmitter<Product> =
     new EventEmitter<Product>();
-  inCart: boolean = false;
 
   constructor(private productInfoService: ProductInfoService) {}
 
@@ -23,11 +22,9 @@ export class ProductCardComponent {
 
   addToCart() {
     this.addProductToCart.emit(this.product);
-    this.inCart = true;
   }
 
   removeFromCart() {
     this.removeProductFromCart.emit(this.product);
-    this.inCart = false;
   }
 }

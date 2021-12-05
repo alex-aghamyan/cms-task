@@ -1,6 +1,6 @@
 <mat-card class="product-card">
   <mat-card-content
-    [routerLink]="['product', product.name]"
+    [routerLink]="['', product.name]"
     (click)="openProduct()"
     class="card-content"
   >
@@ -13,12 +13,12 @@
       (click)="addToCart()"
       mat-icon-button
       color="primary"
-      [disabled]="inCart"
+      [disabled]="product.isInCart"
     >
       <mat-icon>add_shopping_cart</mat-icon>
     </button>
     <button
-      *ngIf="inCart"
+      *ngIf="product.isInCart"
       (click)="removeFromCart()"
       mat-icon-button
       color="warn"

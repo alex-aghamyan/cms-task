@@ -5,4 +5,5 @@ export interface Product {
   photoURL: string;
   description: string;
   price: number;
+  isInCart?: boolean;
 }
