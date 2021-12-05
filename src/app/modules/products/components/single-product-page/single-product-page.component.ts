@@ -12,7 +12,6 @@ import { GetProductsService } from 'src/app/core/services/get-products.service';
 })
 export class SingleProductPageComponent implements OnInit {
   product$: Observable<Product> = EMPTY;
-  isInCart: boolean = false;
 
   constructor(
     private cartService: CartService,
